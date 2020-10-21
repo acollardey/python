@@ -40,7 +40,7 @@ with SSHTunnelForwarder(
     conn = pymysql.connect(host='127.0.0.1', user=sql_username,
             passwd=sql_password, db=sql_main_database,
             port=tunnel.local_bind_port)
-    query = '''select * from user where id = 12345678'''          # enter in database query here
+    query = '''select * from my_table where id = 12345678'''          # enter in database query here
     data = pd.read_sql_query(query, conn)
     conn.close()
 
