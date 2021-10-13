@@ -1,0 +1,89 @@
+import pandas as pd
+
+import numpy as np
+
+RMA_bulk_data = pd.read_csv('BulkReportRMA10082021.csv', encoding='ISO-8859-1')
+
+ 
+
+IW_data = RMA_bulk_data[RMA_bulk_data.CUSTOMER_PO == "RMA-IW"]
+
+print("IW TOTAL")
+
+print(len(IW_data.index))
+
+ 
+
+IW_pass = IW_data[IW_data["TEST RESULT"] == "PASS"]
+
+print("--------")
+
+print("IW PASS")
+
+print(len(IW_pass.index))
+
+ 
+
+IW_fail = IW_data[IW_data["TEST RESULT"] == "FAIL"]
+
+print("IW FAIL")
+
+print(len(IW_fail.index))
+
+print("IW TOTAL TESTED")
+
+print(len(IW_fail.index)+len(IW_pass.index))
+
+ 
+
+DOA_data = RMA_bulk_data[RMA_bulk_data.CUSTOMER_PO == "RMA-DOA"]
+
+print("--------")
+
+print("DOA TOTAL GENERATED")
+
+print(len(DOA_data.index))
+
+ 
+
+DOA_pass = DOA_data[DOA_data["TEST RESULT"] == "PASS"]
+
+print("DOA PASS")
+
+print(len(DOA_pass.index))
+
+ 
+
+DOA_fail = DOA_data[DOA_data["TEST RESULT"] == "FAIL"]
+
+print("DOA FAIL")
+
+print(len(DOA_fail.index))
+
+print("DOA TOTAL TESTED")
+
+print(len(DOA_fail.index)+len(DOA_pass.index))
+
+ 
+
+RMA_Indiv_data = RMA_bulk_data[RMA_bulk_data.CUSTOMER_PO == "RMA-Manual"]
+
+RMA_Indiv_pass = RMA_Indiv_data[RMA_Indiv_data["TEST RESULT"] == "PASS"]
+
+print("--------")
+
+print("RMA INDIV PASS")
+
+print(len(RMA_Indiv_pass.index))
+
+ 
+
+RMA_Indiv_fail = RMA_Indiv_data[RMA_Indiv_data["TEST RESULT"] == "FAIL"]
+
+print("RMA INDIV FAIL")
+
+print(len(RMA_Indiv_fail.index))
+
+print("RMA INDIV TOTAL TESTED")
+
+print(len(RMA_Indiv_pass.index)+len(RMA_Indiv_fail.index))
